@@ -23,8 +23,28 @@ def get_sales_data():
     print("Example: 10,20,30,40,50,60\n")
     # \n is to make space in the terminal
 
-    data_str = input("Enter your data her: ")
-    print(f"The data provided is {data_str}")
+    data_str = input("Enter your data here: ")
+    # the split() to return the broken up values as a list and in the terminal it will remove the commmas
+    sales_data = data_str.split(",")
+    print(sales_data)
+    validate_data(sales_data)
+
+def validate_data(values):
+    """
+    Inside the try, coverts all string values into intgers. raises ValueError if strings cannot be converted into int, 
+    or if there are not exaclty 6 values
+    """
+    # we call this function inside the get_sales_data fucntion because it is validating the data
+    try:
+        if len(values) != 6:
+            raise ValueError (
+                f"Exaclty 6 values required, you provided {len(values)}"
+            )
+    except ValueError as e:
+            print(f"Invalid data: {e}, please try again. \n")
+
+
+
 
 # outside of the functions so it can run the functions
 get_sales_data()
